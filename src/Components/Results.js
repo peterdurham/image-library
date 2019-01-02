@@ -18,6 +18,7 @@ const Results = (props) => {
             <div className="search__results">
                 {searchResults.map((result)=><img 
                     src={result.webformatURL} 
+                    key={result.webformatURL}
                     className="search__image" 
                     alt="search result"
                     onClick={()=>props.viewImage(result.id)}

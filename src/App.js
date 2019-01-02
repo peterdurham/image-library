@@ -20,7 +20,9 @@ class App extends Component {
   }
   searchImagesHandler = (input) => {
     input = input.replace(" ", "+");
-    let URL = `https://pixabay.com/api/?key=10823850-e691644d7a93a21619904f332&q=${input}&image_type=photo`
+    const API_KEY = process.env.REACT_APP_API_KEY;
+    
+    let URL = `https://pixabay.com/api/?key=${API_KEY}&q=${input}&image_type=photo`
     return fetch(URL)
           .then(r => r.json())
           .then(data => {
@@ -65,7 +67,7 @@ class App extends Component {
     return (
       <div className="App">
         <Modal show={this.state.viewingImage} modalClosed={this.viewCancelHandler}>
-          <img src={this.state.imageToView} class="modal__image" alt="viewed"/>
+          <img src={this.state.imageToView} className="modal__image" alt="viewed"/>
         </Modal>
         <Search
           searchInput = {this.state.searchInput}
